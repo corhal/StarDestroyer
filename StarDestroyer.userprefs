@@ -1,13 +1,16 @@
 ﻿<Properties StartupItem="Assembly-CSharp.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\ModuleManager.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Module.cs">
     <Files>
       <File FileName="Assets\Scripts\Enemy.cs" Line="8" Column="17" />
-      <File FileName="Assets\Scripts\Module.cs" Line="19" Column="11" />
-      <File FileName="Assets\Scripts\TurretModule.cs" Line="20" Column="46" />
+      <File FileName="Assets\Scripts\Module.cs" Line="32" Column="37" />
+      <File FileName="Assets\Scripts\TurretModule.cs" Line="66" Column="40" />
       <File FileName="Assets\Scripts\ArmorModule.cs" Line="10" Column="2" />
-      <File FileName="Assets\Scripts\ModuleManager.cs" Line="15" Column="2" />
-      <File FileName="Assets\Scripts\ThrusterModule.cs" Line="7" Column="2" />
+      <File FileName="Assets\Scripts\ModuleManager.cs" Line="14" Column="52" />
+      <File FileName="Assets\Scripts\ThrusterModule.cs" Line="10" Column="3" />
+      <File FileName="Assets\Scripts\IShooter.cs" Line="7" Column="2" />
+      <File FileName="Assets\Scripts\BeamCannon.cs" Line="31" Column="37" />
+      <File FileName="Assets\Scripts\RadarModule.cs" Line="12" Column="16" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

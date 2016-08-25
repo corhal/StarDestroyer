@@ -1,104 +1,76 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class TurretModule : Module {
 
-	public GameObject Target;
+	List<GameObject> targets;
+	GameObject target;
+	IShooter weapon;
+	Dictionary<float, GameObject> distances;
 
-	public GameObject GunPoint;
-
-	public int damagePerShot = 1;                  // The damage inflicted by each bullet.
-	public float timeBetweenBullets = 0.15f;        // The time between each shot.
-	public float range = 100f;                      // The distance the gun can fire.
-
-	float timer;                                    // A timer to determine when to fire.
-	Ray shootRay;                                   // A ray from the gun end forwards.
-	RaycastHit shootHit;                            // A raycast hit to get information about what was hit.
-	int shootableMask;                              // A layer mask so the raycast only hits things on the shootable layer.
-	//ParticleSystem gunParticles;                    // Reference to the particle system.
-	LineRenderer gunLine;                           // Reference to the line renderer.
-	//AudioSource gunAudio;                           // Reference to the audio source.
-	Light gunLight;                                 // Reference to the light component.
-	float effectsDisplayTime = 0.2f;                // The proportion of the timeBetweenBullets that the effects will display for.
-
-	void Awake () {
-		// Create a layer mask for the Shootable layer.
-		shootableMask = LayerMask.GetMask ("Shootable");
-
-		// Set up the references.
-		//gunParticles = GetComponent<ParticleSystem> ();
-		gunLine = GetComponent <LineRenderer> ();
-		//gunAudio = GetComponent<AudioSource> ();
-		gunLight = GetComponent<Light> ();
+	void Awake() {
+		weapon = GetComponentInChildren<IShooter> ();
+		distances = new Dictionary<float, GameObject> ();
+		targets = new List<GameObject> ();
+		Module.OnModuleDestroyed += Module_OnModuleDestroyed;
 	}
 
-	void Update () {
-		// Add the time since Update was last called to the timer.
-		timer += Time.deltaTime;
-
-		if (Target != null) {
-			transform.LookAt (Target.transform.position);
+	void Module_OnModuleDestroyed (Module module) {
+		if (target == module.gameObject) {
+			target = null;
 		}
-
-		// If the Fire1 button is being press and it's time to fire...
-		if(operational && Target != null && timer >= timeBetweenBullets) {
-			// ... shoot the gun.
-			Shoot ();
-		}
-
-		// If the timer has exceeded the proportion of timeBetweenBullets that the effects should be displayed for...
-		if(timer >= timeBetweenBullets * effectsDisplayTime) {
-			// ... disable the effects.
-			DisableEffects ();
+		if (targets.Contains(module.gameObject)) {
+			Debug.Log ("removing target");
+			RemoveTarget (module.gameObject);
 		}
 	}
 
-	public void DisableEffects () {
-		// Disable the line renderer and the light.
-		gunLine.enabled = false;
-		gunLight.enabled = false;
-	}
-
-	void Shoot () {
-		// Reset the timer.
-		timer = 0f;
-
-		// Play the gun shot audioclip.
-		//gunAudio.Play ();
-
-		// Enable the light.
-		gunLight.enabled = true;
-
-		// Stop the particles from playing if they were, then start the particles.
-		//gunParticles.Stop ();
-		//gunParticles.Play ();
-
-		// Enable the line renderer and set it's first position to be the end of the gun.
-		gunLine.enabled = true;
-		gunLine.SetPosition (0, GunPoint.transform.position);
-
-		// Set the shootRay so that it starts at the end of the gun and points forward from the barrel.
-		shootRay.origin = GunPoint.transform.position;
-		shootRay.direction = GunPoint.transform.forward;
-
-		// Perform the raycast against gameobjects on the shootable layer and if it hits something...
-		if(Physics.Raycast (shootRay, out shootHit, range, shootableMask)) {
-			// Try and find a Module script on the gameobject hit.
-			Module enemy = shootHit.collider.GetComponent <Module> ();
-
-			// If the Module component exist...
-			if(enemy != null) {
-				// ... the enemy should take damage.
-				enemy.TakeDamage (damagePerShot, shootHit.point);
+	void Update() {
+		if (target != null) {
+			transform.LookAt (target.transform.position);
+		} else {
+			if (weapon.IsShooting()) {
+				weapon.ToggleShooting (false);
 			}
-
-			// Set the second position of the line renderer to the point the raycast hit.
-			gunLine.SetPosition (1, shootHit.point);
 		}
-		// If the raycast didn't hit anything on the shootable layer...
-		else {
-			// ... set the second position of the line renderer to the fullest extent of the gun's range.
-			gunLine.SetPosition (1, shootRay.origin + shootRay.direction * range);
+	}
+
+	public void RemoveTarget(GameObject newTarget) {
+		targets.Remove (newTarget);
+
+		UpdateTargets();
+	}
+
+	public void AddTarget(GameObject newTarget) {
+		targets.Add (newTarget);
+
+		UpdateTargets ();
+	}
+
+	void UpdateTargets() {	
+		List<GameObject> targetsToRemove = new List<GameObject> ();
+
+		foreach (var targetObj in targets) {
+			if (targetObj == null || !targetObj.GetComponent<Module>().Alive) {
+				targetsToRemove.Add (targetObj);
+			}
+		}
+
+		foreach (var targetObj in targetsToRemove) {
+			targets.Remove (targetObj);
+		}
+
+		if (target == null && targets.Count > 0) {
+			distances.Clear ();
+			foreach (var targetObj in targets) {
+				distances.Add (Vector3.Distance (transform.position, targetObj.transform.position), targetObj);
+			}
+			float[] distanceValues = new float[distances.Count];
+			distances.Keys.CopyTo (distanceValues, 0);
+			float minDistance = Mathf.Min (distanceValues);
+			target = distances [minDistance];
+			weapon.ToggleShooting (true);
 		}
 	}
 }
