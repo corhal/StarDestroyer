@@ -45,7 +45,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\Scripts\ShipModule.cs" />
+     <Compile Include="Assets\Scripts\ArmorModule.cs" />
+     <Compile Include="Assets\Scripts\Enemy.cs" />
+     <Compile Include="Assets\Scripts\Module.cs" />
+     <Compile Include="Assets\Scripts\ModuleManager.cs" />
+     <Compile Include="Assets\Scripts\ThrusterModule.cs" />
+     <Compile Include="Assets\Scripts\TurretModule.cs" />
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>
