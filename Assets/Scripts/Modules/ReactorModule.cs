@@ -3,13 +3,14 @@ using System.Collections;
 
 public class ReactorModule : ShipModule {
 
-	// Use this for initialization
-	void Start () {
-	
+	public float InitialOutputPerSecond;
+	float outputPerSecond;
+
+	void Awake() {
+		outputPerSecond = InitialOutputPerSecond;
 	}
-	
-	// Update is called once per frame
-	void Update () {
-	
+
+	public float ProduceEnergy() {
+		return outputPerSecond * Time.deltaTime;
 	}
 }

@@ -2,6 +2,7 @@
 using System.Collections;
 
 public abstract class ShipModule : MonoBehaviour, ITakeDamage {	
+	
 	public int StartingHp;
 	public string Name { get { return this.ToString(); } }
 	public bool Alive { get { return operational; } }
@@ -18,7 +19,7 @@ public abstract class ShipModule : MonoBehaviour, ITakeDamage {
 		hp = maxHp;
 		operational = true;
 	}
-	
+
 	public void TakeDamage(int amount, Vector3 hitPoint) {			
 		hp -= amount;
 		if (hp <= 0) {

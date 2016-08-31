@@ -8,5 +8,10 @@ public abstract class ShipSystem : MonoBehaviour {
 
 	void Start() {
 		modules = new List<ShipModule>(GetComponentsInChildren<ShipModule> ()); // Я еще поблагодарю себя за это решение...
+		ShipModule.OnModuleDestroyed += ShipModule_OnModuleDestroyed;
+	}
+
+	void ShipModule_OnModuleDestroyed (ShipModule module) {
+		
 	}
 }
