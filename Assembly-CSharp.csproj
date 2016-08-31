@@ -45,16 +45,28 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\Scripts\ArmorModule.cs" />
+     <Compile Include="Assets\Scripts\Base classes\ShipModule.cs" />
+     <Compile Include="Assets\Scripts\Base classes\ShipSystem.cs" />
      <Compile Include="Assets\Scripts\BeamCannon.cs" />
      <Compile Include="Assets\Scripts\Enemy.cs" />
      <Compile Include="Assets\Scripts\IShooter.cs" />
-     <Compile Include="Assets\Scripts\Module.cs" />
+     <Compile Include="Assets\Scripts\ITakeDamage.cs" />
+     <Compile Include="Assets\Scripts\Managers\SystemManager.cs" />
      <Compile Include="Assets\Scripts\ModuleFoundation.cs" />
-     <Compile Include="Assets\Scripts\ModuleManager.cs" />
-     <Compile Include="Assets\Scripts\RadarModule.cs" />
-     <Compile Include="Assets\Scripts\ThrusterModule.cs" />
-     <Compile Include="Assets\Scripts\TurretModule.cs" />
+     <Compile Include="Assets\Scripts\Modules\ArmorModule.cs" />
+     <Compile Include="Assets\Scripts\Modules\BatteryModule.cs" />
+     <Compile Include="Assets\Scripts\Modules\RadarModule.cs" />
+     <Compile Include="Assets\Scripts\Modules\ReactorModule.cs" />
+     <Compile Include="Assets\Scripts\Modules\ShieldModule.cs" />
+     <Compile Include="Assets\Scripts\Modules\ThrusterModule.cs" />
+     <Compile Include="Assets\Scripts\Modules\TurretModule.cs" />
+     <Compile Include="Assets\Scripts\Shield.cs" />
+     <Compile Include="Assets\Scripts\Systems\AutoWeaponSystem.cs" />
+     <Compile Include="Assets\Scripts\Systems\DetectionSystem.cs" />
+     <Compile Include="Assets\Scripts\Systems\EnergySystem.cs" />
+     <Compile Include="Assets\Scripts\Systems\FlightSystem.cs" />
+     <Compile Include="Assets\Scripts\Systems\HullSystem.cs" />
+     <Compile Include="Assets\Scripts\Systems\ShieldSystem.cs" />
  <Reference Include="UnityEngine.UI">
  <HintPath>D:/Unity5/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>

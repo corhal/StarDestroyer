@@ -4,10 +4,12 @@ using System.Collections;
 public class ModuleFoundation : MonoBehaviour {
 	
 	public string[] AllowedModules;
-	public Module MyModule;
+	public ShipModule MyModule;
 
 	void Awake() {
-		MyModule = GetComponentInChildren<Module> ();
-		Debug.Log (MyModule.GetType ());
+		MyModule = GetComponentInChildren<ShipModule> ();
+		if (!UnityEditor.ArrayUtility.Contains(AllowedModules, MyModule.GetType().ToString())) {
+			Debug.Log ("Module mismatch: " + MyModule.GetType().ToString());
+		}
 	}
 }

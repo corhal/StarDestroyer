@@ -87,12 +87,12 @@ public class BeamCannon : MonoBehaviour, IShooter {
 		// Perform the raycast against gameobjects on the shootable layer and if it hits something...
 		if(Physics.Raycast (shootRay, out shootHit, range, shootableMask)) {
 			// Try and find a Module script on the gameobject hit.
-			Module enemy = shootHit.collider.GetComponent <Module> ();
+			ITakeDamage taker = shootHit.collider.GetComponent <ITakeDamage> ();
 
 			// If the Module component exist...
-			if(enemy != null) {
+			if(taker != null) {
 				// ... the enemy should take damage.
-				enemy.TakeDamage (damagePerShot, shootHit.point);
+				taker.TakeDamage (damagePerShot, shootHit.point);
 			}
 
 			// Set the second position of the line renderer to the point the raycast hit.

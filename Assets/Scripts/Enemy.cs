@@ -1,9 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Enemy : MonoBehaviour {
-	
-	public Module Target;
+public class Enemy : MonoBehaviour {	
+
 	// Use this for initialization
 	void Start () {
 		//Target.TakeDamage(1);
