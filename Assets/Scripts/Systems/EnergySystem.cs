@@ -27,14 +27,14 @@ public class EnergySystem : ShipSystem {
 
 	void Update() {
 		foreach (var battery in batteries) { // Как правильно - заряжать все батареи понемногу одновременно, или быстро по очереди?
-			Debug.Log ("Reactor output: " + totalOutputPerUpdate.ToString());
+			//Debug.Log ("Reactor output: " + totalOutputPerUpdate.ToString());
 			if (battery.CurrentEnergy < battery.MaxEnergy) { 
 				battery.TakeEnergy(totalOutputPerUpdate);
 				break; // Для начала попробуем быстро по очереди
 			}
 		}
 		foreach (var battery in batteries) {
-			Debug.Log (battery.CurrentEnergy + "/" + battery.MaxEnergy);
+			//Debug.Log (battery.CurrentEnergy + "/" + battery.MaxEnergy);
 		}
 	}
 }

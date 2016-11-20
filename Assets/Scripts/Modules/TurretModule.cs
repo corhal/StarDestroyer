@@ -4,20 +4,20 @@ using System.Collections.Generic;
 
 public class TurretModule : ShipModule {
 
-	GameObject target;
-	public GameObject Target { get { return target; } }
+	IShootable target;
+	public IShootable Target { get { return target; } }
 
-	IShooter weapon;
+	Weapon weapon;
 
 	void Awake() {
-		weapon = GetComponentInChildren<IShooter> ();
+		weapon = GetComponentInChildren<Weapon> ();
 	}
 
 	void Update() {
 		if (target != null) {
-			transform.LookAt (target.transform.position);
+			transform.LookAt (target.ShootableGameObject().transform.position);
 		} else {
-			if (weapon.IsShooting()) {
+			if (weapon.IsShooting) {
 				weapon.ToggleShooting (false);
 			}
 		}
@@ -27,7 +27,7 @@ public class TurretModule : ShipModule {
 	/// Sets the target and starts shooting if it is not null.
 	/// </summary>
 	/// <param name="newTarget">New target.</param>
-	public void SetTarget(GameObject newTarget) {
+	public void SetTarget(IShootable newTarget) {
 		target = newTarget;
 		if (target != null) {
 			weapon.ToggleShooting (true);

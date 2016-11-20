@@ -4,22 +4,25 @@ using System.Collections.Generic;
 
 public class SystemManager : MonoBehaviour {
 
+	/*
+	 * Вероятно, все, зачем нужен sysManager - это помогать системам в нужное время узнать друг о друге?
+	 */
+
 	ShipSystem[] systems;
 
 	AutoWeaponSystem autoWeaponSystem;
+	DetectionSystem detectionSystem;
 	FlightSystem flightSystem;
 
 	void Awake() {
 		systems = GetComponentsInChildren<ShipSystem> ();
 		autoWeaponSystem = GetComponentInChildren<AutoWeaponSystem> ();
 		flightSystem = GetComponentInChildren<FlightSystem> ();
-		flightSystem.MyBody = GetComponent<Rigidbody> ();
-		DetectionSystem.OnTargetsChanged += DetectionSystem_OnTargetsChanged;
-	}
+		detectionSystem = GetComponentInChildren<DetectionSystem> ();
+		flightSystem.MyBody = GetComponent<Rigidbody> (); // Ужас!
 
-	void DetectionSystem_OnTargetsChanged (DetectionSystem sender, GameObject target, bool found) {
-		if (UnityEditor.ArrayUtility.Contains(systems, sender)) {			
-			autoWeaponSystem.UpdateTargets (target, found);
+		if (detectionSystem != null && autoWeaponSystem != null) {
+			autoWeaponSystem.SubscribeToDetectionSystem (detectionSystem);
 		}
 	}
 }

@@ -3,18 +3,33 @@ using System.Collections;
 
 public class RadarModule : ShipModule {
 
-	public delegate void TargetChangedEventHandler(RadarModule radar, GameObject target, bool found);
-	public static event TargetChangedEventHandler OnTargetChanged;
+	float radarRadius;
+
+	public float InitialRadarRadius;
+
+	SphereCollider radarCollider;
+
+	//public delegate void TargetStatusChangedEventHandler(GameObject target, bool found);
+	public event TargetStatusChangedEventHandler OnTargetStatusChanged;
+
+	void Awake() {
+		radarCollider = gameObject.GetComponent<SphereCollider> ();
+		radarRadius = InitialRadarRadius;
+	}
+
+	void Start() {
+		radarCollider.radius = radarRadius;
+	}
 
 	void OnTriggerEnter (Collider other) {
 		if (other.GetComponent<ShipModule>() != null) {			
-			OnTargetChanged (this, other.gameObject, true);
+			OnTargetStatusChanged (other.gameObject, true);
 		}
 	}
 
 	void OnTriggerExit(Collider other) {
 		if (other.GetComponent<ShipModule>() != null) {			
-			OnTargetChanged (this, other.gameObject, false);
+			OnTargetStatusChanged (other.gameObject, false);
 		}
 	}
 }

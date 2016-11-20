@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Shield : MonoBehaviour, ITakeDamage {
+public class Shield : MonoBehaviour, IShootable {
 
 	ParticleSystem shieldParticles;
 
@@ -50,6 +50,14 @@ public class Shield : MonoBehaviour, ITakeDamage {
 		if (hp <= 0) {
 			gameObject.SetActive (false);
 		}
+	}
+
+	public GameObject ShootableGameObject() {
+		return gameObject;
+	}
+
+	public bool IsAlive() {
+		return gameObject.activeSelf;
 	}
 
 	public void Recharge() {

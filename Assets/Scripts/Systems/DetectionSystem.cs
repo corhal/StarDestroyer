@@ -2,36 +2,45 @@
 using System.Collections;
 using System.Collections.Generic;
 
+public delegate void TargetStatusChangedEventHandler(GameObject target, bool found); // eh
+
 public class DetectionSystem : ShipSystem {
+
+	/*
+	 * Нужен ли посредник в лице SystemManager'а?
+	 * Или логично, что радарная система знает об оружейной?
+	 * Или логично, что оружейная система подпишется на события радарной? <--
+	 */
 	
 	List<GameObject> targets;
+	List<RadarModule> radars;
 
-	public delegate void TargetsChangedEventHandler(DetectionSystem sender, GameObject target, bool found);
-	public static event TargetsChangedEventHandler OnTargetsChanged;
+	public event TargetStatusChangedEventHandler OnTargetStatusChanged;
 
 	void Awake() {		
-		RadarModule.OnTargetChanged += RadarModule_OnTargetChanged;
+		radars = new List<RadarModule> (gameObject.GetComponentsInChildren<RadarModule> ());
+		foreach (var radar in radars) {
+			radar.OnTargetStatusChanged += Radar_OnTargetStatusChanged;
+		}
 		ShipModule.OnModuleDestroyed += ShipModule_OnModuleDestroyed; // не очень изящно, по-хорошему это должен делать радар
 		targets = new List<GameObject> ();
+	}
+
+	void Radar_OnTargetStatusChanged (GameObject target, bool found) {				
+		if (!targets.Contains (target) && found) {
+			targets.Add (target);
+			OnTargetStatusChanged (target, true);
+		} else {
+			Debug.Log ("removing target from radar system");
+			targets.Remove (target);
+			OnTargetStatusChanged (target, false);
+		}
 	}
 
 	void ShipModule_OnModuleDestroyed (ShipModule module) {		
 		if (targets.Contains(module.gameObject)) {
 			targets.Remove (module.gameObject);
-			OnTargetsChanged (this, module.gameObject, false);
-		}
-	}
-
-	void RadarModule_OnTargetChanged (RadarModule radar, GameObject target, bool found) {		
-		if (modules.Contains(radar)) {			
-			if (!targets.Contains(target) && found) {
-				targets.Add (target);
-				OnTargetsChanged (this, target, true);
-			} else {
-				Debug.Log ("removing target from radar system");
-				targets.Remove (target);
-				OnTargetsChanged (this, target, false);
-			}
+			OnTargetStatusChanged (module.gameObject, false);
 		}
 	}
 }

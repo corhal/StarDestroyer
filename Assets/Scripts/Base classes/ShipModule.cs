@@ -1,11 +1,11 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public abstract class ShipModule : MonoBehaviour, ITakeDamage {	
+public abstract class ShipModule : MonoBehaviour, IShootable {	
 	
 	public int StartingHp;
 	public string Name { get { return this.ToString(); } }
-	public bool Alive { get { return operational; } }
+	public bool Alive { get { return operational; } } // Интересно, почему Alive возвращает operational
 	int maxHp;
 	int hp;
 	protected bool operational;
@@ -27,6 +27,14 @@ public abstract class ShipModule : MonoBehaviour, ITakeDamage {
 			operational = false;
 			Die ();
 		}
+	}
+
+	public bool IsAlive() {
+		return operational;
+	}
+
+	public GameObject ShootableGameObject() {
+		return gameObject;
 	}
 
 	void Die() {
