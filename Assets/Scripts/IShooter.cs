@@ -10,11 +10,11 @@ public interface IShooter {
 	/// Toggles shooting on or off.
 	/// </summary>
 	/// <param name="shouldShoot">If set to <c>true</c> should start shooting.</param>
-	void ToggleShooting (bool shouldShoot);
+	//void ToggleShooting (bool shouldShoot);
 
 	/// <summary>
 	/// Determines whether this instance is shooting.
 	/// </summary>
 	/// <returns><c>true</c> if this instance is shooting; otherwise, <c>false</c>.</returns>
-	bool IsShooting ();
+	//bool IsShooting ();
 }

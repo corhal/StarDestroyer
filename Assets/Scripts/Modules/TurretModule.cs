@@ -31,6 +31,7 @@ public class TurretModule : ShipModule {
 		target = newTarget;
 		if (target != null) {
 			weapon.ToggleShooting (true);
+			//Debug.Log ("Should start shooting");
 		}
 	}
 }

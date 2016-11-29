@@ -16,7 +16,7 @@ public class HitscanWeapon : Weapon {
 		gunLight = GetComponentInChildren<Light> ();
 	}
 
-	protected override void Shoot() {		
+	protected override void Shoot() {			
 		gunLine.SetVertexCount (base.ShotsAtOnce * 2);
 
 		gunLine.enabled = true;

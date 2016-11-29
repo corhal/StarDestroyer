@@ -3,8 +3,9 @@ using System.Collections;
 using System.Collections.Generic;
 
 public class AutoWeaponSystem : ShipSystem {
-	
-	List<IShootable> targets;
+
+	public List<GameObject> targetObjs;
+	public List<IShootable> targets;
 	List<TurretModule> turrets;
 
 	Dictionary<IShootable, float> distancesByTargets;
@@ -33,8 +34,10 @@ public class AutoWeaponSystem : ShipSystem {
 	void UpdateTargetStatus(IShootable target, bool found) {
 		if (found) {
 			targets.Add (target);
+			targetObjs.Add(target.ShootableGameObject());
 		} else {
 			targets.Remove (target);
+			targetObjs.Remove(target.ShootableGameObject());
 		}
 
 		UpdateTargets ();

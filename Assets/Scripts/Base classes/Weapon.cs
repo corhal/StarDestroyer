@@ -21,7 +21,6 @@ public class Weapon: MonoBehaviour {
 
 		if (IsShooting && timer >= TimeBetweenShots && Time.timeScale != 0) {
 			timer = 0f;
-
 			Shoot();
 		}
 
