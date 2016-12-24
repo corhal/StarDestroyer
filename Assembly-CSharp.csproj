@@ -49,6 +49,11 @@
      <Compile Include="Assets\Scripts\Base classes\ProjectileWeapon.cs" />
      <Compile Include="Assets\Scripts\Base classes\ShipModule.cs" />
      <Compile Include="Assets\Scripts\Base classes\ShipSystem.cs" />
+     <Compile Include="Assets\Scripts\Base classes\Solar Systems\ChangeLookAtTarget.cs" />
+     <Compile Include="Assets\Scripts\Base classes\Solar Systems\LookAtTarget.cs" />
+     <Compile Include="Assets\Scripts\Base classes\Solar Systems\Planet.cs" />
+     <Compile Include="Assets\Scripts\Base classes\Solar Systems\RotateAround.cs" />
+     <Compile Include="Assets\Scripts\Base classes\Solar Systems\SolarSystem.cs" />
      <Compile Include="Assets\Scripts\Base classes\Weapon.cs" />
      <Compile Include="Assets\Scripts\BeamCannon.cs" />
      <Compile Include="Assets\Scripts\Enemy.cs" />
@@ -70,6 +75,7 @@
      <Compile Include="Assets\Scripts\Systems\FlightSystem.cs" />
      <Compile Include="Assets\Scripts\Systems\HullSystem.cs" />
      <Compile Include="Assets\Scripts\Systems\ShieldSystem.cs" />
+     <Compile Include="Assets\Scripts\Utility\CSVReader.cs" />
      <Compile Include="Assets\Scripts\Utility\CameraFollow.cs" />
      <Compile Include="Assets\Scripts\Utility\Rotator.cs" />
      <Compile Include="Assets\Scripts\Utility\Utility.cs" />
@@ -85,6 +91,8 @@
      <Compile Include="Assets\_Completed-Assets\Scripts\Done_RandomRotator.cs" />
      <Compile Include="Assets\_Completed-Assets\Scripts\Done_WeaponController.cs" />
      <None Include="Assets\TutorialInfo\Fonts\LICENSE.txt" />
+     <None Include="Assets\Texts\Planets.txt" />
+     <None Include="Assets\Texts\newFile.txt" />
  <Reference Include="UnityEngine.UI">
  <HintPath>D:/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>

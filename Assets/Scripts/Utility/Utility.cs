@@ -50,6 +50,10 @@ public static class Utility {
 		return sum / (intervalEnd - intervalStart);
 	}
 
+	public static float ParseString (string stringToParse) {
+		return float.Parse (stringToParse, System.Globalization.CultureInfo.InvariantCulture);
+	}
+
 	/*public static IOrderedEnumerable<KeyValuePair<Client, int>> SortDictionary(Dictionary<Client, int> dictionary, bool descending) {
 		// Order by values.
 		// ... Use LINQ to specify sorting by value.

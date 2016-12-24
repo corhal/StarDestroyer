@@ -47,6 +47,8 @@
   <ItemGroup>
      <Compile Include="Assets\TutorialInfo\Scripts\Editor\TutorialInfoEditor.cs" />
      <None Include="Assets\TutorialInfo\Fonts\LICENSE.txt" />
+     <None Include="Assets\Texts\Planets.txt" />
+     <None Include="Assets\Texts\newFile.txt" />
  <Reference Include="UnityEditor.Advertisements">
  <HintPath>D:/Unity/Editor/Data/UnityExtensions/Unity/Advertisements/Editor/UnityEditor.Advertisements.dll</HintPath>
  </Reference>
