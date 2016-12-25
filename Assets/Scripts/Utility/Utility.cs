@@ -50,7 +50,7 @@ public static class Utility {
 		return sum / (intervalEnd - intervalStart);
 	}
 
-	public static float ParseString (string stringToParse) {
+	public static float StringToFloat (string stringToParse) {
 		return float.Parse (stringToParse, System.Globalization.CultureInfo.InvariantCulture);
 	}
 

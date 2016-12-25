@@ -1,5 +1,5 @@
 name,size,distanceFromSun,rotationSpeed,movementSpeed
-Mercury,0.5,100,0.5,10
-Mars,0.8,200,0.6,15
-Earth,1,300,0.2,20
-Venus,0.9,400,0.5,15
+Mercury,0.5,10,1,0.5
+Mars,0.8,20,1.2,0.6
+Earth,1,30,0.4,0.2
+Venus,0.9,40,1.0,0.5
