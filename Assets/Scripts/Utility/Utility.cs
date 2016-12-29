@@ -70,4 +70,14 @@ public static class Utility {
 
 		return items;		
 	}*/
+
+	public static Vector3 RotateAroundPivot (Vector3 pivotPosition, Vector3 startPosition, float angle) {
+		float rx = startPosition.x - pivotPosition.x;
+		float ry = startPosition.z - pivotPosition.z;
+		float c = Mathf.Cos(angle);
+		float s = Mathf.Sin(angle);
+		float x1 = pivotPosition.x + rx * c - ry * s;
+		float y1 = pivotPosition.z + rx * s + ry * c;
+		return new Vector3 (x1, startPosition.y, y1);
+	}
 }

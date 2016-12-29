@@ -46,6 +46,7 @@
   </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets\Scripts\Base classes\HitscanWeapon.cs" />
+     <Compile Include="Assets\Scripts\Base classes\Item.cs" />
      <Compile Include="Assets\Scripts\Base classes\ProjectileWeapon.cs" />
      <Compile Include="Assets\Scripts\Base classes\ShipModule.cs" />
      <Compile Include="Assets\Scripts\Base classes\ShipSystem.cs" />
@@ -54,15 +55,18 @@
      <Compile Include="Assets\Scripts\Base classes\Solar Systems\Planet.cs" />
      <Compile Include="Assets\Scripts\Base classes\Solar Systems\RotateAround.cs" />
      <Compile Include="Assets\Scripts\Base classes\Solar Systems\SolarSystem.cs" />
+     <Compile Include="Assets\Scripts\Base classes\StorageCell.cs" />
      <Compile Include="Assets\Scripts\Base classes\Weapon.cs" />
      <Compile Include="Assets\Scripts\BeamCannon.cs" />
      <Compile Include="Assets\Scripts\Enemy.cs" />
      <Compile Include="Assets\Scripts\IShootable.cs" />
      <Compile Include="Assets\Scripts\IShooter.cs" />
+     <Compile Include="Assets\Scripts\Managers\GameController.cs" />
      <Compile Include="Assets\Scripts\Managers\SystemManager.cs" />
      <Compile Include="Assets\Scripts\ModuleFoundation.cs" />
      <Compile Include="Assets\Scripts\Modules\ArmorModule.cs" />
      <Compile Include="Assets\Scripts\Modules\BatteryModule.cs" />
+     <Compile Include="Assets\Scripts\Modules\CargoModule.cs" />
      <Compile Include="Assets\Scripts\Modules\RadarModule.cs" />
      <Compile Include="Assets\Scripts\Modules\ReactorModule.cs" />
      <Compile Include="Assets\Scripts\Modules\ShieldModule.cs" />
@@ -70,6 +74,7 @@
      <Compile Include="Assets\Scripts\Modules\TurretModule.cs" />
      <Compile Include="Assets\Scripts\Shield.cs" />
      <Compile Include="Assets\Scripts\Systems\AutoWeaponSystem.cs" />
+     <Compile Include="Assets\Scripts\Systems\CargoSystem.cs" />
      <Compile Include="Assets\Scripts\Systems\DetectionSystem.cs" />
      <Compile Include="Assets\Scripts\Systems\EnergySystem.cs" />
      <Compile Include="Assets\Scripts\Systems\FlightSystem.cs" />
@@ -90,8 +95,9 @@
      <Compile Include="Assets\_Completed-Assets\Scripts\Done_PlayerController.cs" />
      <Compile Include="Assets\_Completed-Assets\Scripts\Done_RandomRotator.cs" />
      <Compile Include="Assets\_Completed-Assets\Scripts\Done_WeaponController.cs" />
+     <None Include="Assets\Texts\Andromeda.txt" />
      <None Include="Assets\TutorialInfo\Fonts\LICENSE.txt" />
-     <None Include="Assets\Texts\Planets.txt" />
+     <None Include="Assets\Texts\Sol.txt" />
      <None Include="Assets\Texts\newFile.txt" />
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>

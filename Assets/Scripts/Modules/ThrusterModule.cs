@@ -1,15 +1,13 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class ThrusterModule : ShipModule {
+public class ThrusterModule : ShipModule { // в сущности сейчас ничего не делает, надо привязать к FlightSystem
 
 	public float Thrust;
 	public Vector3 ThrustForce;
 
 	void Start () {
 		ThrustForce = transform.forward;
-		Debug.Log (ThrustForce);
-		Debug.Log (transform.localScale);
 	}
 
 	public void Push (Rigidbody rigidbody) {		
