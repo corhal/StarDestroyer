@@ -1,26 +1,26 @@
 ﻿<Properties StartupItem="Assembly-CSharp.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Systems\CargoSystem.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Modules\CargoModule.cs">
     <Files>
-      <File FileName="Assets\Scripts\Managers\GameController.cs" Line="12" Column="2" />
-      <File FileName="Assets\Scripts\Base classes\Solar Systems\Planet.cs" Line="10" Column="25" />
-      <File FileName="Assets\Scripts\Utility\Utility.cs" Line="74" Column="25" />
-      <File FileName="Assets\Scripts\Base classes\Solar Systems\SolarSystem.cs" Line="16" Column="17" />
+      <File FileName="Assets\Scripts\Managers\GameController.cs" Line="18" Column="52" />
+      <File FileName="Assets\Scripts\Base classes\Solar Systems\Planet.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Utility\Utility.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Base classes\Solar Systems\SolarSystem.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\Managers\SystemManager.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Modules\CargoModule.cs" Line="21" Column="49" />
+      <File FileName="Assets\Scripts\Modules\CargoModule.cs" Line="30" Column="3" />
       <File FileName="Assets\Scripts\Modules\BatteryModule.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\Modules\RadarModule.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\Modules\ReactorModule.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\Modules\ShieldModule.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Modules\ThrusterModule.cs" Line="8" Column="1" />
+      <File FileName="Assets\Scripts\Modules\ThrusterModule.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\Modules\TurretModule.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\Modules\ArmorModule.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\Shield.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Base classes\Item.cs" Line="6" Column="24" />
-      <File FileName="Assets\Scripts\Systems\CargoSystem.cs" Line="6" Column="2" />
+      <File FileName="Assets\Scripts\Systems\CargoSystem.cs" Line="22" Column="53" />
       <File FileName="Assets\Scripts\Systems\DetectionSystem.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Systems\FlightSystem.cs" Line="23" Column="90" />
-      <File FileName="Assets\Scripts\Base classes\StorageCell.cs" Line="36" Column="2" />
+      <File FileName="Assets\Scripts\Systems\FlightSystem.cs" Line="27" Column="2" />
+      <File FileName="Assets\Scripts\ModuleFoundation.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Base classes\HitscanWeapon.cs" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

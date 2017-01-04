@@ -6,11 +6,6 @@ public class FlightSystem : ShipSystem {
 
 	List<ThrusterModule> thrusters;
 
-	List<ThrusterModule> backThrusters;
-	List<ThrusterModule> frontThrusters;
-	List<ThrusterModule> rightThrusters;
-	List<ThrusterModule> leftThrusters;
-
 	float maxSpeed;
 	float maxRotationSpeed;
 
@@ -21,31 +16,9 @@ public class FlightSystem : ShipSystem {
 
 	void Awake () {
 		thrusters = new List<ThrusterModule>(GetComponentsInChildren<ThrusterModule> ()); // =\
-		backThrusters = new List<ThrusterModule>();
-		frontThrusters = new List<ThrusterModule> ();
-		rightThrusters = new List<ThrusterModule> ();
-		leftThrusters = new List<ThrusterModule> ();
-		foreach (var thruster in thrusters) {
-			int yAngle = (int)thruster.transform.rotation.eulerAngles.y;
-			switch (yAngle) {
-			case 0:
-				backThrusters.Add (thruster);
-				break;
-			case 90:
-				leftThrusters.Add (thruster);
-				break;
-			case 270:
-				rightThrusters.Add (thruster);
-				break;
-			case 180:
-				frontThrusters.Add (thruster);
-				break;
-			default:
-				throw new UnityException ("Tried to add thruster to the ship which is not front, back, right or left");
-			}
-		}
-		maxSpeed = backThrusters [0].Thrust / 10.0f;
-		maxRotationSpeed = leftThrusters [0].Thrust / 10.0f;
+
+		maxSpeed = thrusters [0].Thrust / 10.0f;
+		maxRotationSpeed = thrusters [0].Thrust / 35.0f;
 	}
 
 	void Update () {

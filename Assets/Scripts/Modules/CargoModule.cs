@@ -4,39 +4,37 @@ using System.Collections.Generic;
 
 public class CargoModule : MonoBehaviour {
 
-	StorageCell[] storageCells;
+	public int InitialMaxWeight;
 
-	int InitialStorageCellsAmount;
-	int storageCellsAmount;
-	int currentLoad;
+	int maxWeight;
+	public int MaxWeight { get { return maxWeight; } }
+	int currentWeight;
+	public int CurrentWeight { get { return currentWeight; } }
+	public int FreeWeight {	get { return maxWeight - currentWeight; } }
 
 	Dictionary<Item, int> storedAmountsByItems;
 
 	void Awake () {
-		storageCellsAmount = InitialStorageCellsAmount;
+		maxWeight = InitialMaxWeight;
+		storedAmountsByItems = new Dictionary<Item, int> ();
+		foreach (Item item in System.Enum.GetValues(typeof(Item))) {
+			storedAmountsByItems.Add (item, 0);
+		}
 	}
 
 	void Start () {
-		storageCells = new StorageCell [storageCellsAmount];
-		for (int i = 0; i < storageCellsAmount; i++) {
-			storageCells[i] = new StorageCell (10);
-		}
+		
 	}
 
-	public void TakeItems(Item item, int amount) {
-		List<StorageCell> suitableCells = new List<StorageCell> ();
-		foreach (var storageCell in storageCells) {
-			if (storageCell.StoredItem == item || storageCell.StoredItem == null || storageCell.CurrentLoad == 0) {
-				suitableCells.Add (storageCell);
-			}
+	public void TakeItems(Item item, int amount) {	
+		int itemWeight = GameController.instance.ItemWeightsByItems [item];	
+		int itemsWeight = itemWeight * amount;
+		if (FreeWeight >= itemsWeight) {
+			currentWeight += itemsWeight;
+			storedAmountsByItems [item] += amount;
 		}
-		suitableCells.Sort ();
-		foreach (var cell in suitableCells) {
-			amount = cell.TakeItems (item, amount);
-			if (amount == 0) {
-				break;
-			}
-		}
+
+		Debug.Log (item + ": " + storedAmountsByItems [item]);
 	}
 
 	public void GiveItems(Item item, int amount) {
