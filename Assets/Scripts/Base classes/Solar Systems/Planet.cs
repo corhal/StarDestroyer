@@ -22,11 +22,26 @@ public class Planet : MonoBehaviour {
 
 		transform.localScale = Vector3.one * this.size;
 		transform.position = new Vector3 (this.distanceFromSun, rotationCenter.transform.position.y, this.distanceFromSun);
+
+		if (Random.Range(0.0f, 1.0f) < 2.0f) {
+			CreateTradePost ();
+		}
 	}
 
 	void Update () {
 		transform.Rotate (transform.up, rotationSpeed * Time.deltaTime); // вращаемся вокруг себя
 		Vector3 newPosition = Utility.RotateAroundPivot(rotationCenter.transform.position, transform.position, movementSpeed * Time.deltaTime);
 		transform.position = newPosition;
+	}
+
+	void CreateTradePost () {
+		CargoModule cargoModule = gameObject.AddComponent<CargoModule> ();
+		cargoModule.InitialMaxWeight = 9000;
+		cargoModule.InitializeFromPlanet ();
+
+		gameObject.AddComponent<CargoSystem> ();
+		TradeSystem tradeSystem = gameObject.AddComponent<TradeSystem> ();
+		tradeSystem.InitialMoney = 900000;
+		gameObject.AddComponent<SystemManager> ();
 	}
 }

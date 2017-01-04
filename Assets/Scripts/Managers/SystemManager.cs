@@ -13,16 +13,25 @@ public class SystemManager : MonoBehaviour {
 	AutoWeaponSystem autoWeaponSystem;
 	DetectionSystem detectionSystem;
 	FlightSystem flightSystem;
+	CargoSystem cargoSystem;
+	TradeSystem tradeSystem;
 
 	void Awake() {
 		systems = GetComponentsInChildren<ShipSystem> ();
 		autoWeaponSystem = GetComponentInChildren<AutoWeaponSystem> ();
 		flightSystem = GetComponentInChildren<FlightSystem> ();
 		detectionSystem = GetComponentInChildren<DetectionSystem> ();
-		flightSystem.MyBody = GetComponent<Rigidbody> (); // Ужас!
+		cargoSystem = GetComponentInChildren<CargoSystem> ();
+		tradeSystem = GetComponentInChildren<TradeSystem> ();
+		if (flightSystem != null) {
+			flightSystem.MyBody = GetComponent<Rigidbody> (); // Ужас!
+		}
 
 		if (detectionSystem != null && autoWeaponSystem != null) {
 			autoWeaponSystem.SubscribeToDetectionSystem (detectionSystem);
+		}
+		if (tradeSystem != null && cargoSystem != null) {
+			tradeSystem.SubscribeToCargoSystem (cargoSystem);
 		}
 	}
 }

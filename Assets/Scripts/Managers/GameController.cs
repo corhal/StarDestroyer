@@ -5,7 +5,9 @@ using System.Collections.Generic;
 public class GameController : MonoBehaviour {
 
 	public int[] InitialWeights;
+	public int[] InitialCosts;
 	public Dictionary<Item, int> ItemWeightsByItems;
+	public Dictionary<Item, int> ItemCostsByItems;
 
 	public TextAsset[] SolarSystemTables;
 	public SolarSystem CurrentSolarSystem;
@@ -15,9 +17,11 @@ public class GameController : MonoBehaviour {
 	void Awake () {
 		instance = this;
 		ItemWeightsByItems = new Dictionary<Item, int> ();
+		ItemCostsByItems = new Dictionary<Item, int> ();
 		for (int i = 0; i < InitialWeights.Length; i++) {
 			Item item = (Item)i;
 			ItemWeightsByItems.Add (item, InitialWeights [i]);
+			ItemCostsByItems.Add (item, InitialCosts [i]);
 		}
 	}
 

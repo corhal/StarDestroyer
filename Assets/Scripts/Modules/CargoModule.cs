@@ -13,6 +13,7 @@ public class CargoModule : MonoBehaviour {
 	public int FreeWeight {	get { return maxWeight - currentWeight; } }
 
 	Dictionary<Item, int> storedAmountsByItems;
+	public Dictionary<Item, int> StoredAmountsByItems { get { return storedAmountsByItems; } }
 
 	void Awake () {
 		maxWeight = InitialMaxWeight;
@@ -22,8 +23,13 @@ public class CargoModule : MonoBehaviour {
 		}
 	}
 
-	void Start () {
-		
+	public void InitializeFromPlanet () { // дичайший костыль
+		if (gameObject.tag != "Player") {
+			maxWeight = InitialMaxWeight;
+			foreach (Item item in System.Enum.GetValues(typeof(Item))) {
+				TakeItems (item, 100);
+			}
+		}
 	}
 
 	public void TakeItems(Item item, int amount) {	
@@ -33,11 +39,14 @@ public class CargoModule : MonoBehaviour {
 			currentWeight += itemsWeight;
 			storedAmountsByItems [item] += amount;
 		}
-
-		Debug.Log (item + ": " + storedAmountsByItems [item]);
 	}
 
 	public void GiveItems(Item item, int amount) {
-
+		int itemWeight = GameController.instance.ItemWeightsByItems [item];	
+		int itemsWeight = itemWeight * amount;
+		if (storedAmountsByItems[item] >= amount) {
+			currentWeight -= itemsWeight;
+			storedAmountsByItems [item] -= amount;
+		}
 	}
 }

@@ -79,6 +79,10 @@
      <Compile Include="Assets\Scripts\Systems\FlightSystem.cs" />
      <Compile Include="Assets\Scripts\Systems\HullSystem.cs" />
      <Compile Include="Assets\Scripts\Systems\ShieldSystem.cs" />
+     <Compile Include="Assets\Scripts\Systems\TradeSystem.cs" />
+     <Compile Include="Assets\Scripts\UI\TradeElement.cs" />
+     <Compile Include="Assets\Scripts\UI\TradeWindow.cs" />
+     <Compile Include="Assets\Scripts\UI\UIController.cs" />
      <Compile Include="Assets\Scripts\Utility\CSVReader.cs" />
      <Compile Include="Assets\Scripts\Utility\CameraFollow.cs" />
      <Compile Include="Assets\Scripts\Utility\Rotator.cs" />
