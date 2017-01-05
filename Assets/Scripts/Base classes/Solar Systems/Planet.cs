@@ -26,6 +26,8 @@ public class Planet : MonoBehaviour {
 		if (Random.Range(0.0f, 1.0f) < 2.0f) {
 			CreateTradePost ();
 		}
+
+		gameObject.layer = LayerMask.NameToLayer ("Navigation");
 	}
 
 	void Update () {

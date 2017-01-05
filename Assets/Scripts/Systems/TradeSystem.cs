@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class TradeSystem : MonoBehaviour {
 
-	public delegate void TradeSystemClickedEventHandler(TradeSystem tradeSystem);
+	public delegate void TradeSystemClickedEventHandler (TradeSystem tradeSystem);
 	public static event TradeSystemClickedEventHandler OnTradeSystemClicked;
 
 	public int InitialMoney;
@@ -64,7 +64,11 @@ public class TradeSystem : MonoBehaviour {
 		return false;
 	}
 
-	void OnMouseDown () {
+	public void StartTrade () {
 		OnTradeSystemClicked (this);
 	}
+
+	/*void OnMouseDown () {
+		OnTradeSystemClicked (this);
+	}*/
 }

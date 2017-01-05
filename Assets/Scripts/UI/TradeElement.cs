@@ -10,6 +10,8 @@ public class TradeElement : MonoBehaviour {
 	public Text PlayersAmountLabel;
 	public Text TradersAmountLabel;
 
+	public Text TradeLabel;
+
 	public InputField AmountInput;
 
 	public TradeSystem PlayerTrader;
@@ -26,16 +28,25 @@ public class TradeElement : MonoBehaviour {
 	}
 
 	void Start () {
-		Debug.Log (Trader);
 		CostPerUnit = (int)((float) GameController.instance.ItemCostsByItems [ItemToTrade] * Trader.CostCoefsByItems [ItemToTrade]);
 		CostLabel.text = "$" + CostPerUnit;
 		ItemLabel.text = ItemToTrade.ToString ();
 		UpdateElement ();
-		Debug.Log (ItemToTrade);
+	}
+
+	public void ChangeInput (int amount) {
+		float floatAmount = 0;
+		if (AmountInput.text != "") {
+			floatAmount = Utility.StringToFloat (AmountInput.text);
+		}
+		int num = (int)floatAmount;
+		num += amount;
+		AmountInput.text = num.ToString ();
+		SetAmountFromInputField ();
 	}
 
 	public void Trade () {
-		if (AmountToTrade > 0) {
+		if (AmountToTrade >= 0) {
 			Buy (AmountToTrade);
 		} else {
 			Sell (-AmountToTrade);
@@ -60,6 +71,11 @@ public class TradeElement : MonoBehaviour {
 	void UpdateElement () {
 		PlayersAmountLabel.text = PlayerTrader.TotalStoredAmountsByItems [ItemToTrade].ToString();
 		TradersAmountLabel.text = Trader.TotalStoredAmountsByItems [ItemToTrade].ToString();
+		if (AmountToTrade >= 0) {
+			TradeLabel.text = "Buy";
+		} else {
+			TradeLabel.text = "Sell";
+		}
 
 		// dirty hax time
 

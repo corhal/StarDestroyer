@@ -38,5 +38,8 @@ public enum Item {
 	Water,
 	Food,
 	Iron,
+	Steel,
+	Copper,
+	Mramor,
 	Uranium
 }

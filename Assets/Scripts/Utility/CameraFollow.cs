@@ -5,6 +5,7 @@ public class CameraFollow : MonoBehaviour {
 
     public Transform target;
     public float smoothing;
+	public bool PhysicalMovement;
     //public Vector3 playerPos;
 
     private Vector3 offset;
@@ -13,8 +14,19 @@ public class CameraFollow : MonoBehaviour {
         offset = transform.position - target.position;
     }
 
-    void FixedUpdate() {        
+    void FixedUpdate() {      
+		if (!PhysicalMovement) {
+			return;
+		}
         Vector3 targetCamPos = target.position + offset;
         transform.position = Vector3.Lerp(transform.position, targetCamPos, smoothing * Time.deltaTime);
     }
+
+	void Update() {
+		if (PhysicalMovement) {
+			return;
+		}
+		Vector3 targetCamPos = target.position + offset;
+		transform.position = Vector3.Lerp(transform.position, targetCamPos, smoothing * Time.deltaTime);
+	}
 }

@@ -14,11 +14,11 @@ public class TradeWindow : MonoBehaviour {
 
 	void Awake () {
 		TradeSystem.OnTradeSystemClicked += TradeSystem_OnTradeSystemClicked;
-	}
-
-	void TradeSystem_OnTradeSystemClicked (TradeSystem tradeSystem) {
 		TradeElementObjects = new List<GameObject> ();
 		TradeElements = new List<TradeElement> ();
+	}
+
+	void TradeSystem_OnTradeSystemClicked (TradeSystem tradeSystem) {		
 		if (tradeSystem.gameObject.tag != "Player") {
 			Window.SetActive (true);
 			UpdateWindow (tradeSystem);
@@ -36,7 +36,7 @@ public class TradeWindow : MonoBehaviour {
 		InfoLabel.text = "Cargo: " + player.TotalCurrentWeight + "/" + player.TotalMaxWeight + "    $" + player.Money;
 	}
 
-	public void UpdateWindow (TradeSystem trader) {
+	public void UpdateWindow (TradeSystem trader) {		
 		TradeSystem player = null;
 		GameObject[] objects = GameObject.FindGameObjectsWithTag ("Player");
 		foreach (var obj in objects) {
@@ -45,7 +45,7 @@ public class TradeWindow : MonoBehaviour {
 			}
 		}
 		InfoLabel.text = "Cargo: " + player.TotalCurrentWeight + "/" + player.TotalMaxWeight + "    $" + player.Money;
-		foreach (var tradeElementObject in TradeElementObjects) {
+		foreach (var tradeElementObject in TradeElementObjects) {			
 			Destroy (tradeElementObject);
 		}
 		TradeElementObjects.Clear ();

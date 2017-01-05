@@ -27,6 +27,7 @@ public class CargoModule : MonoBehaviour {
 		if (gameObject.tag != "Player") {
 			maxWeight = InitialMaxWeight;
 			foreach (Item item in System.Enum.GetValues(typeof(Item))) {
+				Debug.Log (item);
 				TakeItems (item, 100);
 			}
 		}
